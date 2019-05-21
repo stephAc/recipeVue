@@ -7,20 +7,22 @@ import Login from '@/pages/Login'
 Vue.use(Router)
 
 export default new Router({
-    routes: [{
+    mode: 'history',
+    routes: [
+        {
             path: '/',
             name: 'HelloWorld',
-            component: HelloWorld
+            component: HelloWorld,
         },
         {
             path: '/recipe/create',
             name: 'Creation',
-            component: Creation
+            component: Creation,
         },
         {
-            path: '/user/login',
+            path: '/login',
             name: 'Login',
-            component: Login
-        }
-    ]
+            component: Login,
+        },
+    ],
 })
