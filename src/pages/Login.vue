@@ -1,37 +1,49 @@
 <template>
-  <div>
-    <div class="loginGrid">
-      <div class="borderRight">
-        <div>
-          <b-button pill class="marginBottom communWidth">
-            <i class="fab fa-facebook-square"></i>
-            Connexion via Facebook
-          </b-button>
-          <br>
-          <b-button pill class="marginBottom communWidth">
-            <i class="fab fa-google"></i>
-            Connexion via Google
-          </b-button>
-          <br>
-          <b-button pill class="marginBottom communWidth">
-            <i class="fab fa-twitter"></i>
-            Connexion via Twitter
-          </b-button>
+  <div class="fullpage">
+    <div class="centerDiv">
+      <div class="loginGrid">
+        <div class="borderRight flexInput">
+          <div>
+            <b-button pill class="flexBtn marginBottom communWidth">
+              <i class="fab fa-facebook-f"></i>
+              Connexion via Facebook
+            </b-button>
+            <b-button pill class="flexBtn marginBottom communWidth">
+              <i class="fab fa-google"></i>
+              Connexion via Google
+            </b-button>
+            <b-button pill class="flexBtn marginBottom communWidth">
+              <i class="fab fa-twitter"></i>
+              Connexion via Twitter
+            </b-button>
+          </div>
+          <b-button pill class="marginTop communWidth">Pas encore inscrit ?</b-button>
         </div>
-        <b-button pill class="marginTop communWidth">Pas encore inscrit ?</b-button>
-      </div>
-      <div class="flexInput">
-        <div>
-          <b-form-input type="email" class="communWidth" placeholder="E-mail" v-model="email"></b-form-input>
-          <br>
-          <b-form-input
-            type="password"
+
+        <form class="flexInput" @submit.prevent="onSubmit">
+          <div style="display: flex; flex-direction: column;">
+            <b-form-input
+              type="email"
+              class="communWidth marginBottom"
+              placeholder="E-mail"
+              v-model="email"
+            ></b-form-input>
+            <br>
+            <b-form-input
+              type="password"
+              class="communWidth"
+              placeholder="Mot de passe"
+              v-model="mdp"
+            ></b-form-input>
+          </div>
+          <b-button
+            pill
             class="communWidth"
-            placeholder="Mot de passe"
-            v-model="mdp"
-          ></b-form-input>
-        </div>
-        <b-button pill class="communWidth" style="margin-top: 40px">Se connecter</b-button>
+            type="submit"
+            value="Submit"
+            style="margin-top: 40px"
+          >Se connecter</b-button>
+        </form>
       </div>
     </div>
   </div>
@@ -46,14 +58,38 @@ export default {
             mdp: null,
         }
     },
+    methods: {
+        onSubmit() {
+            let userConnection = {
+                email: this.email,
+                mdp: this.mdp,
+            }
+            alert(userConnection.email + ' ' + userConnection.mdp)
+        },
+    },
 }
 </script>
 
 <style>
+.fullpage {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.centerDiv {
+    width: 100%;
+    align-self: center;
+}
 .flexInput {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+}
+.flexBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 .communWidth {
@@ -71,6 +107,9 @@ export default {
 .loginGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 @media screen and (max-width: 645px) {
     .loginGrid {
