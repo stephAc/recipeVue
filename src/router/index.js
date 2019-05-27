@@ -8,8 +8,7 @@ Vue.use(Router)
 
 export default new Router({
     mode: 'history',
-    routes: [
-        {
+    routes: [{
             path: '/',
             name: 'HelloWorld',
             component: HelloWorld,
@@ -24,5 +23,9 @@ export default new Router({
             name: 'Login',
             component: Login,
         },
+        {
+            path: '*',
+            redirect: '/'
+        }
     ],
 })
