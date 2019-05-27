@@ -1,10 +1,11 @@
 <template>
-  <div class="poster"></div>
+  <div class="poster">{{number}}</div>
 </template>
 
 <script>
 export default {
     name: 'Poster',
+    props: ['number'],
     data: function() {
         return {}
     },
