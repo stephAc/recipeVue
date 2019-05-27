@@ -4,16 +4,21 @@
     <div>
       <b-button to="/login">VERS LOGIN</b-button>
     </div>
+    <PosterList style="margin-top: 20px;"/>
   </div>
 </template>
 
 <script>
+import PosterList from './PosterList'
 export default {
     name: 'HelloWorld',
     data() {
         return {
             msg: 'Coucou tout le monde !',
         }
+    },
+    components: {
+        PosterList,
     },
 }
 </script>
