@@ -1,17 +1,22 @@
 <template>
-  <div
-    ref="list"
-    class="listDisplay"
-    @mousedown="mousedown($event)"
-    @mousemove="mousemove($event)"
-    @mouseup="mouseup"
-  >
-    <PosterDiv v-for="n in 20" :key="n" :number="n"/>
+  <div class="listContainer">
+    <div
+      ref="list"
+      class="listDisplay"
+      @mousedown="mousedown($event)"
+      @mousemove="mousemove($event)"
+      @mouseup="mouseup"
+      v-on:scroll="scroll($event)"
+    >
+      <PosterDiv v-for="n in 20" :key="n" :number="n"/>
+      <BtnNext/>
+    </div>
   </div>
 </template>
 
 <script>
 import PosterDiv from './PosterDiv'
+import BtnNext from './BtnNext'
 export default {
     name: 'PosterList',
     data: function() {
@@ -45,9 +50,21 @@ export default {
             this.mouseIsUp = true
             this.mouseIsDown = false
         },
+        scroll: event => {
+            console.log('scroll')
+
+            // const newScrollLeft = $elem.scrollLeft()
+            // const scrollWidth=$elem.get(0).scrollWidth;
+            // if (scrollWidth-newScrollLeft==width){
+
+            // }
+            // if (newScrollLeft === 0) {
+            //     alert('left end');}
+        },
     },
     components: {
         PosterDiv,
+        BtnNext,
     },
 }
 </script>
@@ -58,9 +75,12 @@ export default {
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
 }
-
-.listDisplay:hover {
+.listContainer {
+    position: relative;
+}
+.listContainer:hover {
     transform: scale(1.01);
 }
 </style>
