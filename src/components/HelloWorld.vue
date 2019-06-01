@@ -5,6 +5,7 @@
       <b-button to="/login">VERS LOGIN</b-button>
     </div>
     <PosterList style="margin: 20px 20px 0px 20px;"/>
+    <PosterList style="margin: 20px 20px 0px 20px;"/>
   </div>
 </template>
 
