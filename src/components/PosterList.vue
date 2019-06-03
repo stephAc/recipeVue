@@ -34,7 +34,7 @@ export default {
             scrollLeft: null,
             btnRight: true,
             btnLeft: false,
-            scrollStep: 200,
+            scrollStep: 500,
         }
     },
     methods: {
@@ -77,10 +77,12 @@ export default {
             }
         },
         btnRightClick() {
-            this.$refs.list.scrollLeft += this.scrollStep
+            const element = this.$refs.list
+            element.scrollLeft += this.scrollStep
         },
         btnLeftClick() {
-            this.$refs.list.scrollLeft -= this.scrollStep
+            const element = this.$refs.list
+            element.scrollLeft -= this.scrollStep
         },
     },
     components: {
