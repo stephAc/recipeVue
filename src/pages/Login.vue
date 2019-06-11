@@ -45,6 +45,14 @@
           >Se connecter</b-button>
         </form>
       </div>
+      <div style="display: flex; margin-top: 50px;">
+        <b-button
+          to="/"
+          pill
+          class="communWidth"
+          style="margin-left:auto; margin-right: auto"
+        >Page d'accueil</b-button>
+      </div>
     </div>
   </div>
 </template>
