@@ -6,7 +6,7 @@
     @click="onButtonClick"
   >
     <h4 class="m-2">{{ title }}</h4>
-    <b-button class="border-0 bg-transparent text-dark">
+    <b-button class="border-0 bg-transparent text-dark m-0">
       <i class="fa-2x" :class="getButtonFontAwesomeIcon"></i>
     </b-button>
   </div>

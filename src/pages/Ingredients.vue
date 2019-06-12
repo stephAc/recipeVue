@@ -27,15 +27,20 @@
         >{{ingredient.quantity}} {{ingredient.unit}} de {{ingredient.name}}</li>
       </draggable>
     </b-form>
+    <DirectionalButton title="Création" :isOnRight="false" to="/recipe/create"/>
+    <DirectionalButton title="Étapes" :isOnRight="true" to="/recipe/create/steps"/>
   </div>
 </template>
 
 <script>
 import * as _ from 'lodash'
 import draggable from 'vuedraggable'
+import DirectionalButton from '@/components/DirectionalButton'
+
 export default {
     components: {
         draggable,
+        DirectionalButton
     },
     data() {
         return {
@@ -80,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="">
+<style lang="" scoped>
 input,
 select,
 button {

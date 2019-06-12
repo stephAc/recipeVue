@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light">
-      <b-navbar-brand href="#">
+      <b-navbar-brand to="/recipe/create">
         <img
           src="../assets/logo.png"
           class="d-inline-block align-top"
@@ -24,7 +24,7 @@
               Se connecter / S'inscrire
               <i class="fas fa-user-circle fa-lg"></i>
             </template>
-            <b-dropdown-item to="/profile">Profile</b-dropdown-item>
+            <b-dropdown-item to="/profile">Profil</b-dropdown-item>
             <b-dropdown-item href="#">Se déconnecter</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>

@@ -5,16 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        recipes: [
-            {
+        recipes: [{
                 id: 1,
                 name: "Parmentier de confit de canard",
                 img: "https://image.afcdn.com/recipe/20141009/1649.jpg",
                 nb_person: 4,
                 origin: "Origine française",
-                description:"Simple mais raffiné",
-                ingredients: [
-                    {
+                description: "Simple mais raffiné",
+                ingredients: [{
                         name: "cuisses de canard confites",
                         quantity: 4,
                         unit: ""
@@ -60,8 +58,7 @@ export default new Vuex.Store({
                         unit: ""
                     },
                 ],
-                steps: [
-                    {
+                steps: [{
                         name: "",
                         description: "Lavez et épluchez les pommes de terre, et mettez-les à cuire dans un grand volume d'eau salée."
                     },
@@ -125,9 +122,8 @@ export default new Vuex.Store({
                 img: "https://assets.afcdn.com/recipe/20120511/3787_w420h344c1cx1140cy1750.jpg",
                 nb_person: 4,
                 origin: "Origine française",
-                description:"",
-                ingredients: [
-                    {
+                description: "",
+                ingredients: [{
                         name: "abricots",
                         quantity: 15,
                         unit: ""
@@ -158,8 +154,7 @@ export default new Vuex.Store({
                         unit: "c. à soupe"
                     },
                 ],
-                steps: [
-                    {
+                steps: [{
                         name: "",
                         description: "Préchauffer le four à 180°C (thermostat 6)."
                     },
@@ -195,9 +190,8 @@ export default new Vuex.Store({
                 img: "https://assets.afcdn.com/recipe/20160404/5041_w350h250c1cx1500cy1000.jpg",
                 nb_person: 2,
                 origin: "Origine française",
-                description:"Un plat avec des légumes d'été",
-                ingredients: [
-                    {
+                description: "Un plat avec des légumes d'été",
+                ingredients: [{
                         name: "aubergine",
                         quantity: 1,
                         unit: ""
@@ -228,8 +222,7 @@ export default new Vuex.Store({
                         unit: ""
                     },
                 ],
-                steps: [
-                    {
+                steps: [{
                         name: "",
                         description: "Couper les aubergines en tranches de 1 cm d'épaisseur, dans le sens de la longueur."
                     },
@@ -269,13 +262,13 @@ export default new Vuex.Store({
     },
     mutations: {
         ADD_RECIPE(state, recipe) {
-            state.recipeList.push(recipe);
+            state.recipes.push(recipe);
         },
         UPDATE_STEP_LIST(state, stepList) {
             state.newRecipe.steps = stepList
         },
         ADD_NEW_RECIPE(state) {
-            state.recipeList.push(state.newRecipe)
+            state.recipes.push(state.newRecipe)
             state.newRecipe = {}
         },
         UPDATE_RECIPE_INFO(state, recipeInfo) {
