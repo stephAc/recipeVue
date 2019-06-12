@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <b-form @submit="onSubmit" class="d-flex flex-column">
+    <b-form class="w-50 d-flex flex-column">
       <h4 class="mb-4">Informations générales</h4>
       <b-form-input
         id="input-title"
         class="mb-4 rounded-pill"
-        v-model="form.title"
+        v-model="title"
         type="text"
         required
         placeholder="Titre"
@@ -14,7 +14,7 @@
       <b-form-select class="mb-4 rounded-pill" v-model="originSelected" :options="origins"></b-form-select>
       <div class="mb-4 align-items-center d-flex justify-content-between">
         <p class="mb-0">Nombre de personnes</p>
-        <Counter class="ml-2"/>
+        <Counter @onCounterUpdate="updateCounter" class="ml-2"/>
       </div>
       <b-form-textarea
         id="description"
@@ -33,7 +33,12 @@
       />
       <b-button id="pick-files" class="rounded-pill">Importer une image</b-button>
     </b-form>
-    <DirectionalButton title="Ingrédients" :isOnRight="true" to="/recipe/create/ingredients"/>
+    <DirectionalButton
+      v-if="isFormValid"
+      title="Ingrédients"
+      :isOnRight="true"
+      to="/recipe/create/ingredients"
+    />
   </div>
 </template>
 
@@ -57,9 +62,10 @@ export default {
     },
     data() {
         return {
-            form: {},
+            title: '',
             originSelected: null,
             description: '',
+            counter: 1,
             origins: [
                 { value: null, text: 'Origine' },
                 { value: 'francaise', text: 'Origine française' },
@@ -68,8 +74,34 @@ export default {
             photoUrl: null,
         }
     },
+    computed: {
+        isFormValid() {
+            return (
+                this.title.trim().length > 0 &&
+                this.description.trim().length > 0 &&
+                this.originSelected != null
+            )
+        },
+        newRecipeObject() {
+            return {
+                name: this.title,
+                img: this.photoUrl,
+                nb_person: this.counter,
+                origin: this.originSelected,
+                description: this.description,
+            }
+        },
+    },
     methods: {
-        onSubmit(evt) {},
+        updateCounter(counter) {
+            this.counter = counter
+        },
+        dispatchRecipeInfo() {
+            this.$store.dispatch(
+                'updateNewRecipeBasicInfo',
+                this.newRecipeObject
+            )
+        },
     },
     mounted() {
         const uppy = Uppy({

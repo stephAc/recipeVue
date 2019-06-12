@@ -269,14 +269,43 @@ export default new Vuex.Store({
     },
     mutations: {
         ADD_RECIPE(state, recipe) {
-            state.recipeList.push(recipe)
+            state.recipeList.push(recipe);
         },
+        UPDATE_STEP_LIST(state, stepList) {
+            state.newRecipe.steps = stepList
+        },
+        ADD_NEW_RECIPE(state) {
+            state.recipeList.push(state.newRecipe)
+            state.newRecipe = {}
+        },
+        UPDATE_RECIPE_INFO(state, recipeInfo) {
+            state.newRecipe.name = recipeInfo.name
+            state.newRecipe.img = recipeInfo.img
+            state.newRecipe.nb_person = recipeInfo.nb_person
+            state.newRecipe.origin = recipeInfo.origin
+            state.newRecipe.description = recipeInfo.description
+        }
     },
     actions: {
         addRecipe({
             commit
         }, recipe) {
             commit('ADD_RECIPE', recipe);
+        },
+        updateNewRecipeStepList({
+            commit
+        }, stepList) {
+            commit('UPDATE_STEP_LIST', stepList)
+        },
+        addNewRecipeToRecipeList({
+            commit
+        }) {
+            commit('ADD_NEW_RECIPE')
+        },
+        updateNewRecipeBasicInfo({
+            commit
+        }, recipeInfo) {
+            commit('UPDATE_RECIPE_INFO', recipeInfo)
         }
     }
 });

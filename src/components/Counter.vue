@@ -17,6 +17,11 @@ export default {
             counter: 1,
         }
     },
+    watch: {
+        counter: function(val) {
+            this.$emit('onCounterUpdate', val)
+        },
+    },
 }
 </script>
 
