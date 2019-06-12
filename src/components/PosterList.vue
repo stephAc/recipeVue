@@ -8,7 +8,8 @@
       @mouseup="mouseup"
       v-on:scroll="scroll($event)"
     >
-      <PosterDiv v-for="n in 20" :key="n" :number="n"/>
+      <!-- <PosterDiv v-for="n in 20" :key="n" :number="n"/> -->
+      <RecipeIcon v-for="(recipe, index) in recipes" :key="index" :recipe="recipe"/>
       <BtnNext
         :right="btnRight"
         :left="btnLeft"
@@ -20,6 +21,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import RecipeIcon from './RecipeIcon'
 import PosterDiv from './PosterDiv'
 import BtnNext from './BtnNext'
 export default {
@@ -36,6 +39,9 @@ export default {
             btnLeft: false,
             scrollStep: 500,
         }
+    },
+    computed: {
+        ...mapState(['recipes'])
     },
     methods: {
         mousedown: event => {
@@ -86,6 +92,7 @@ export default {
         },
     },
     components: {
+        RecipeIcon,
         PosterDiv,
         BtnNext,
     },

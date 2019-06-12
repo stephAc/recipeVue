@@ -1,0 +1,6 @@
+[core]
+	editor = 'S:\\Microsoft VS Code\\Microsoft VS Code\\Code.exe' --wait
+[gui]
+	recentrepo = D:/Documents/UPSUD/PRISM/Android/Projet/recette-app
+[user]
+	email = julien.queant@u-psud.fr
