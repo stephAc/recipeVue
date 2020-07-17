@@ -23,7 +23,7 @@
         "@fortawesome/vue-fontawesome": "^0.1.6",
         "bootstrap": "^4.3.1",
         "bootstrap-vue": "^2.0.0-rc.20",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.19",
         "sweetalert2": "^8.12.1",
         "vue": "^2.6.10",
         "vue-router": "^3.0.1",
